@@ -21,7 +21,8 @@ const toggleOfficial = (buttons, officialStatus) => {
 	buttons.each(async function () {
 		const button = $(this);
 		const pid = button.parents("[data-pid]").data("pid");
-		const editedData = { pid, official: officialStatus };
+		const postData = await api.get(`/posts/${pid}`);
+		const editedData = { ...postData, official: officialStatus };
 		button.on("click", function () {
 			api.post(`/plugins/posts/official/${pid}`, editedData, function (err) {
 				if (err) {
