@@ -5,7 +5,11 @@ const routeHelpers = require.main.require('./src/routes/helpers');
 
 const plugin = module.exports;
 
-plugin.init = async function (data) {};
+// Set the official status of a post
+const setOfficial = async (data) => {
+	const { pid, official } = data;
+	await Posts.setPostField(pid, 'official', official);
+};
 
 plugin.addApiRoute = async ({ router, middleware, helpers }) => {
 	const middlewares = [middleware.ensureLoggedIn];
@@ -22,10 +26,4 @@ plugin.addApiRoute = async ({ router, middleware, helpers }) => {
 			helpers.formatApiResponse(200, res);
 		},
 	);
-};
-
-// Set the official status of a post
-const setOfficial = async (data) => {
-	const { pid, official } = data;
-	await Posts.setPostField(pid, 'official', official);
 };

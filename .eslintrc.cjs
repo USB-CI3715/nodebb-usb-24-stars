@@ -64,6 +64,12 @@ function find_compiled_js() {
                     "@typescript-eslint/no-use-before-define": "error",
 		    //"indent": "off"
                 }
+            },
+            {
+              files: ["./plugins/nodebb-plugin-questions-and-answers/static/lib/officialAnswer.js"],
+              parserOptions: {
+                sourceType: "module"
+              }
             }
         ]
     };
