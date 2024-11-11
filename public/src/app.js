@@ -1,8 +1,7 @@
-import { displayUserQuestions } from './questionsDisplay.js';
-
 'use strict';
 
 import displayUserQuestions from './questionsDisplay';
+import displaySearchResults from './displaySearch';
 
 window.$ = require('jquery');
 
@@ -130,6 +129,12 @@ if (document.readyState === 'loading') {
 			messages.show();
 			appLoaded = true;
 		});
+
+		// Manejo del formulario de búsqueda
+		$('body').on('submit', '#search-form', function (e) {
+			e.preventDefault();
+			app.searchTopics();
+		});
 	};
 
 	app.filterMyQuestions = function () {
@@ -138,6 +143,24 @@ if (document.readyState === 'loading') {
 		}).fail(function () {
 			displayUserQuestions([]);
 		});
+	};
+
+	app.searchTopics = function () {
+		const query = $('#search-input').val().toLowerCase();
+		const categoryId = 5;
+
+		if (query.length > 0) {
+			$.get(`/api/category/${categoryId}`, function (data) {
+				const topics = data.topics;
+				const matchingTopics = topics.filter(topic => topic.title.toLowerCase().includes(query));
+				displaySearchResults(matchingTopics);
+			}).fail(function (error) {
+				console.error('Error al obtener los temas:', error);
+				displaySearchResults([]);
+			});
+		} else {
+			displaySearchResults([]);
+		}
 	};
 
 	app.require = async function (modules) {

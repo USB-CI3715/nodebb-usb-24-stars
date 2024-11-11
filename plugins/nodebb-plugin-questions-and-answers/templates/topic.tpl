@@ -9,7 +9,6 @@
 {{{end}}}
 </div>
 {{{ end }}}
-
 <div itemid="{url}" itemscope itemtype="https://schema.org/DiscussionForumPosting">
 	<meta itemprop="headline" content="{escape(titleRaw)}">
 	<meta itemprop="text" content="{escape(titleRaw)}">

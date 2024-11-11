@@ -1,14 +1,16 @@
 {
-  "id": "nodebb-plugin-questions-and-answers",
-  "url": "nodebb-plugin-question-and-answers",
-  "library": "library.js",
-  "hooks": [
-    { "hook": "static:app.load", "method": "init" },
-    {
-      "hook": "static:api.routes",
-      "method": "addApiRoute"
-    }
-  ],
-  "scripts": ["./static/lib/officialAnswer.js"],
-  "templates": "./templates"
+	"id": "nodebb-plugin-questions-and-answers",
+	"url": "nodebb-plugin-question-and-answers",
+	"library": "library.js",
+	"hooks": [
+		{
+			"hook": "static:api.routes",
+			"method": "addApiRoute"
+		}
+	],
+	"scripts": [
+		"./static/lib/officialAnswer.js",
+		"./public/js/client.js",
+	],
+	"templates": "./templates"
 }

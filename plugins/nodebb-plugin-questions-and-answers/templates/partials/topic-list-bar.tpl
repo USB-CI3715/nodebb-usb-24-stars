@@ -42,7 +42,14 @@
 					<i class="fa fa-fw fa-arrow-up"></i> [[recent:load-new-posts]]
 				</a>
 			</div>
-
+			<div style="display: flex; justify-content: center; align-items: center;">
+				{{{if isQA}}}
+					<form id="search-form" method="get" style="margin-right: 30px;">
+						<input type="text" id="search-input" name="q" placeholder="Buscar..." />
+						<button type="submit">Buscar</button>
+					</form>
+				{{{ end }}}
+			</di>
 			<div class="d-flex gap-1 align-items-center">
 				{{{ if template.category }}}
 					{{{if isQA}}}
@@ -65,7 +72,9 @@
 		</div>
 	</nav>
 </div>
-
+<div id="search-results">
+	<!-- Aquí se agregarán dinámicamente las preguntas asociadas a la búsqueda. -->
+</div>
 <div id="questions-container" style="
     margin-top: 5px;
     padding: 15px;

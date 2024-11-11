@@ -13,6 +13,7 @@ define('composer', [
 	'composer/autocomplete',
 	'composer/scheduler',
 	'composer/post-queue',
+	'composer/getSimilarQuestions',
 	'scrollStop',
 	'topicThumbs',
 	'api',
@@ -23,7 +24,7 @@ define('composer', [
 	'search',
 	'screenfull',
 ], function (taskbar, translator, uploads, formatting, drafts, tags,
-	categoryList, preview, resize, autocomplete, scheduler, postQueue, scrollStop,
+	categoryList, preview, resize, autocomplete, scheduler, postQueue, getSimilarQuestions, scrollStop,
 	topicThumbs, api, bootbox, alerts, hooks, messagesModule, search, screenfull) {
 	var composer = {
 		active: undefined,
@@ -936,6 +937,36 @@ define('composer', [
 			});
 		}
 	};
+
+	// busqueda y visualizacion de preguntas similares dado el input del titulo de la pregunta
+	// que se esta escribiendo
+	$(document).on('input', '[data-component="composer/title"] input', async function () {
+		var title = $(this).val();
+		if (title.length > 3) {
+			// obtener las preguntas similares
+			getSimilarQuestions.fetchSimilarQuestions(title).then(function (results) {
+				if (results.length > 0) {
+					// mostrar la lista de preguntas similares
+					$('.similar-questions-list').show();
+					// mostrar los resultados dentro del div con class = similar-questions-list
+					var similarQuestionsList = $('.similar-questions-list');
+					// limpiar la lista de preguntas similares
+					similarQuestionsList.empty();
+					// agregar las preguntas similares a la lista
+					results.forEach(function (result) {
+						// agregar la etiqueta de curso a la pregunta
+						var courseTag = $('<span>').text('#' + result.courseTag).addClass('course-tag-similar-questions');
+						var questionLink = $('<a>').text(result.title).attr('href', '/topic/' + result.slug);
+						var questionItem = $('<div>').append(questionLink).append(courseTag);
+						similarQuestionsList.append(questionItem);
+					});
+				}
+			});
+		} else {
+			// si el titulo es muy corto, ocultar la lista de preguntas similares
+			$('.similar-questions-list').hide();
+		}
+	});
 
 	return composer;
 });

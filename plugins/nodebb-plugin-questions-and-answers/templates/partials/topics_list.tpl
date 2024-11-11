@@ -1,3 +1,9 @@
+<div id="topics-container" class="topics-list">
+    <ul class="list-unstyled">
+        <!-- Los tópicos filtrados se agregarán aquí -->
+    </ul>
+</div>
+
 <ul component="category" class="topics-list list-unstyled" itemscope itemtype="http://www.schema.org/ItemList" data-nextstart="{nextStart}" data-set="{set}">
 
 	{{{ each topics }}}

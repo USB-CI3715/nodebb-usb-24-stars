@@ -1,6 +1,6 @@
-<div class="title-container align-items-center gap-2 d-flex">
+<div class="title-container align-items-start gap-2 d-flex">
 	{{{ if isTopic }}}
-	<div class="category-list-container {{{ if !template.compose }}}d-none d-md-block{{{ end }}} align-self-center">
+	<div class="category-list-container {{{ if !template.compose }}}d-none d-md-block{{{ end }}} align-self-start">
 		<!-- IMPORT partials/category/selector-dropdown-left.tpl -->
 	</div>
 	{{{ end }}}
@@ -14,6 +14,7 @@
 	<div data-component="composer/title" class="position-relative flex-1" style="min-width: 0;">
 		{{{ if isTopicOrMain }}}
 		<input class="title form-control h-100 rounded-1 shadow-none" type="text" placeholder="[[topic:composer.title-placeholder]]" value="{topicTitle}" />
+		<div class="similar-questions-list pt-1"></div>
 		{{{ else }}}
 		<span class="{{{ if !template.compose }}}d-none d-md-block{{{ else }}}d-block{{{ end }}} title h-100 text-truncate">{{{ if isEditing }}}[[topic:composer.editing-in, "{topicTitle}"]]{{{ else }}}[[topic:composer.replying-to, "{topicTitle}"]]{{{ end }}}</span>
 		{{{ end }}}
@@ -22,6 +23,7 @@
 			<div class="quick-search-results-container"></div>
 		</div>
 	</div>
+	
 
 	<div class="{{{ if !template.compose }}}d-none d-md-flex{{{ else }}}d-flex{{{ end }}} action-bar gap-1 align-items-center">
 		<button class="btn btn-sm btn-link text-body fw-semibold composer-minimize" data-action="hide"><i class="fa fa-angle-down"></i> <span class="d-none d-md-inline">[[topic:composer.hide]]</span></button>
@@ -44,3 +46,5 @@
 		</div>
 	</div>
 </div>
+
+

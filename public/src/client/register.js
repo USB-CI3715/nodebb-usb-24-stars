@@ -1,8 +1,5 @@
 'use strict';
 
-const { select } = require('async');
-
-
 define('forum/register', [
 	'translator', 'slugify', 'api', 'bootbox', 'forum/login', 'zxcvbn', 'jquery-form',
 ], function (translator, slugify, api, bootbox, Login, zxcvbn) {
@@ -12,7 +9,6 @@ define('forum/register', [
 
 	Register.init = function () {
 		const username = $('#username');
-		const role = $('#role');
 		const password = $('#password');
 		const password_confirm = $('#password-confirm');
 		const register = $('#register');

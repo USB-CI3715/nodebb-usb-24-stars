@@ -20,3 +20,4 @@ test/files
 *.min.js
 install/docker/
 types/
+/plugins/nodebb-plugin-questions-and-answers/public/js/client.js

@@ -249,6 +249,17 @@
 	.preview {
 		padding: $input-padding-y $input-padding-x;
 	}
+
+	.course-tag-similar-questions {
+		// add styles similar to a label
+		font-size: 14px;
+		font-weight: 600;
+		color: var(--bs-body-color);
+		background-color: var(--bs-warning);
+		border-radius: 0.25rem;
+		padding: 0 0.375rem;
+		margin-left: 5px;
+	}
 }
 
 .datetime-picker {
