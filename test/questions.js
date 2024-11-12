@@ -47,7 +47,7 @@ describe('Questions', () => {
 		}, (err, result) => {
 			assert.ifError(err);
 			assert(result);
-			question.tid = result.questionData.tid;
+			question.tid = result.topicData.tid;
 			done();
 		});
 	});
