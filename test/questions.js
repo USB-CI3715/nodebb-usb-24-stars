@@ -59,8 +59,22 @@ describe('Questions', () => {
 		});
 	});
 
+	it('should fail to create new question with less than 3 characters in title', (done) => {
+		questions.post({ uid: fooUid, title: 'tt', content: question.content, cid: question.categoryId, courseTag: question.courseTag }, (err) => {
+			assert.ok(err);
+			done();
+		});
+	});
+
 	it('should fail to create new question with empty content', (done) => {
 		questions.post({ uid: fooUid, title: question.title, content: '', cid: question.categoryId, courseTag: question.courseTag }, (err) => {
+			assert.ok(err);
+			done();
+		});
+	});
+
+	it('should fail to create new question with less than 8 characters in title', (done) => {
+		questions.post({ uid: fooUid, title: question.title, content: '1234567', cid: question.categoryId, courseTag: question.courseTag }, (err) => {
 			assert.ok(err);
 			done();
 		});
