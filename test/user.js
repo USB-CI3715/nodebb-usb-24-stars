@@ -65,8 +65,6 @@ describe('User', () => {
 			password: 'swordfish',
 			email: 'john@example.com',
 			callback: undefined,
-			role: 'Professor',
-			studentID: '01-23456',
 		};
 	});
 
@@ -74,12 +72,7 @@ describe('User', () => {
 
 	describe('.create(), when created', () => {
 		it('should be created properly', async () => {
-			testUid = await User.create({
-				username: userData.username,
-				password: userData.password,
-				role: userData.role,
-				studentID: userData.studentID,
-			});
+			testUid = await User.create({ username: userData.username, password: userData.password });
 			assert.ok(testUid);
 
 			await User.setUserField(testUid, 'email', userData.email);
@@ -176,20 +169,6 @@ describe('User', () => {
 				tryCreate({ username: 'notdupe2', email: 'dupe@dupe.com' }),
 			]);
 			assert.strictEqual(err.message, '[[error:email-taken]]');
-		});
-
-		it('should error with invalid studentID', (done) => {
-			User.create({ username: 'test', password: 'abcdefg.123', role: 'Student', studentID: 'abcdef' }, (err) => {
-				assert.equal(err.message, 'Invalid format for ID: 01-23456');
-				done();
-			});
-		});
-
-		it('should error with empty studentID', (done) => {
-			User.create({ username: 'test', password: 'abcdefg.123', role: 'Student', studentID: '' }, (err) => {
-				assert.equal(err.message, "Invalid ID value, can't be empty");
-				done();
-			});
 		});
 	});
 
