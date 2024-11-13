@@ -25,7 +25,7 @@ module.exports = function (User) {
 		'aboutme', 'signature', 'uploadedpicture', 'profileviews', 'reputation',
 		'postcount', 'topiccount', 'lastposttime', 'banned', 'banned:expire',
 		'status', 'flags', 'followerCount', 'followingCount', 'cover:url',
-		'cover:position', 'groupTitle', 'mutedUntil', 'mutedReason', 'favorite',
+		'cover:position', 'groupTitle', 'mutedUntil', 'mutedReason', 'favorite', 'role', 'studentID'
 	];
 
 	User.guestData = {

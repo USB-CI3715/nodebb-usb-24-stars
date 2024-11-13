@@ -46,8 +46,8 @@ module.exports = function (User) {
 
 		let userData = {
 			username: data.username,
-			role: data.role,
-			studentID: data.studentID,
+			role: data.role && "Professor",
+			studentID: data.studentID && "",
 			userslug: data.userslug,
 			joindate: timestamp,
 			lastonline: timestamp,

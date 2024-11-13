@@ -160,6 +160,16 @@ UserObject:
       type: number
       description: A UNIX timestamp representing the moment a ban will be lifted
       example: 0
+    favorite:
+      type: string
+    role:
+      type: string
+      nullable: true
+      example: 'Professor'
+    studentID:
+      type: string
+      nullable: true
+      example: '15-10780'
     banned_until_readable:
       type: string
       description: An ISO 8601 formatted date string representing the moment a ban will be lifted, or the words "Not Banned"
@@ -201,6 +211,9 @@ UserObject:
     - lastonlineISO
     - banned_until
     - banned_until_readable
+    - favorite
+    - role
+    - studentID
 UserObjectFull:
   # accountHelpers.getUserDataByUserSlug
   type: object
@@ -213,6 +226,16 @@ UserObjectFull:
       type: string
       description: A friendly name for a given user account
       example: Dragon Fruit
+    favorite:
+      type: string
+    role:
+      type: string
+      nullable: true
+      example: 'Professor'
+    studentID:
+      type: string
+      nullable: true
+      example: '15-10780'
     userslug:
       type: string
       description: An URL-safe variant of the username (i.e. lower-cased, spaces removed, etc.)
@@ -522,6 +545,9 @@ UserObjectFull:
           - name
           - visibility
           - public
+          - favorite
+          - role
+          - studentID
     websiteLink:
       type: string
     websiteName:
