@@ -121,3 +121,9 @@ UserObj:
     banned_until_readable:
       type: string
       example: Not Banned
+    role:
+      type: string
+      example: 'Professor'
+    studentID:
+      type: string
+      example: '15-10780'
