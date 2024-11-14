@@ -1,4 +1,4 @@
-post:
+put:
   tags:
     - posts
   summary: mark post as official
