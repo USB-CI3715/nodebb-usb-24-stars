@@ -1,4 +1,4 @@
-put:
+post:
   tags:
     - posts
   summary: mark post as official
@@ -23,59 +23,51 @@ put:
               type: boolean
               description: Flag to mark the post as official
               example: true
+            pid:
+              type: number
+            uid:
+              type: number
+              description: A user identifier
+            tid:
+              type: number
+              description: A topic identifier
+            content:
+              type: string
+            timestamp:
+              type: number
+            flagId:
+              type: number
+            deleted:
+              type: number
+            upvotes:
+              type: number
+            downvotes:
+              type: number
+            deleterUid:
+              type: number
+            edited:
+              type: number
+            replies:
+              type: number
+            bookmarks:
+              type: number
+            votes:
+              type: number
+            timestampISO:
+              type: string
+              description: An ISO 8601 formatted date string (complementing `timestamp`)
+            editedISO:
+              type: string
+              description: An ISO 8601 formatted date string (complementing `timestamp`)
+            upvoted:
+              type: boolean
+            downvoted:
+              type: boolean
+
   responses:
     '200':
-      description: Post successfully marked as official.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              status:
-                $ref: ../../../components/schemas/Status.yaml#/Status
-              response:
-                type: object
-                properties:
-                  official:
-                    type: boolean
-                    description: Indicates if the post is marked as official
-                    example: true
+      description: Post successfully marked as official
+    '400':
+      description: Invalid request
     '404':
-      description: Post not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              status:
-                $ref: ../../../components/schemas/Status.yaml#/Status
-              error:
-                type: string
-                description: Error message
-                example: Post not found
-delete:
-  tags:
-    - posts
-  summary: unmarked post as official
-  description: This operation unmarks a post as official.
-  parameters:
-    - in: path
-      name: pid
-      schema:
-        type: string
-      required: true
-      description: a valid post id
-      example: 2
-  responses:
-    '200':
-      description: Post successfully unmarked as official
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              status:
-                $ref: ../../../components/schemas/Status.yaml#/Status
-              response:
-                type: object
-                properties: {}
+      description: Post not found
