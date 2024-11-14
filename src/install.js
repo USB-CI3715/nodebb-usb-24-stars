@@ -494,8 +494,6 @@ async function enableDefaultPlugins() {
 	console.log('Enabling default plugins');
 
 	let defaultEnabled = [
-		'nodebb-plugin-composer-question',
-		'nodebb-plugin-questions-and-answers',
 		'nodebb-plugin-markdown',
 		'nodebb-plugin-mentions',
 		'nodebb-widget-essentials',
