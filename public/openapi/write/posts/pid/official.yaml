@@ -35,7 +35,11 @@ put:
                 $ref: ../../../components/schemas/Status.yaml#/Status
               response:
                 type: object
-                properties: {}
+                properties:
+                  official:
+                    type: boolean
+                    description: Indicates if the post is marked as official
+                    example: true
     '404':
       description: Post not found.
       content:
