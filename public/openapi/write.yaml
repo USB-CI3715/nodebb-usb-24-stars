@@ -262,3 +262,5 @@ paths:
     $ref: 'write/files.yaml'
   /files/folder:
     $ref: 'write/files/folder.yaml'
+  /plugins/posts/official/{pid}:
+    $ref: 'write/posts/pid/official.yaml'
