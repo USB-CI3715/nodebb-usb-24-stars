@@ -36,6 +36,19 @@ put:
               response:
                 type: object
                 properties: {}
+    '404':
+      description: Post not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                $ref: ../../../components/schemas/Status.yaml#/Status
+              error:
+                type: string
+                description: Error message
+                example: Post not found
 delete:
   tags:
     - posts
